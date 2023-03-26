@@ -1,27 +1,20 @@
 ﻿
-int number = 147147147;
-List<char> numbers_List = number.ToString().ToList<char>();
-int[] count_numbers = new int[10];
+using ChallengeApp;
 
-foreach (char digitChar in numbers_List)
+List<Employee> employees = new List<Employee> { new("Adam", "K", 35), new("Dawid", "W", 36), new("Agnieszka", "O", 33) };
+
+foreach (Employee employee in employees)
 {
-    int digit;
-    if (int.TryParse(digitChar.ToString(), out digit))
+    employee.addScore(new Random().Next(1, 11));
+    employee.addScore(new Random().Next(1, 11));
+    employee.addScore(new Random().Next(1, 11));
+}
+Employee bestEmpolyee = new();
+foreach (Employee employee in employees)
+{
+    if (bestEmpolyee.Result < employee.Result)
     {
-        for (int i = 0; i < count_numbers.Length; i++)
-        {
-
-            if (i == digit)
-            {
-                count_numbers[i]++;
-            }
-
-        }
+        bestEmpolyee = employee;
     }
-
 }
-
-for (int i = 0; i < count_numbers.Length; i++)
-{
-    Console.WriteLine(i + " => " + count_numbers[i]);
-}
+Console.WriteLine("Pracownik z najwieksza iloscia punktow: \n " + bestEmpolyee.getData());
