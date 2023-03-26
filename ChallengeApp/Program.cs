@@ -1,41 +1,27 @@
-﻿String name = "Ewa";
-char sex = 'K'; // K - kobieta, M - mezczyzna
-int age = 33;
+﻿
+int number = 147147147;
+List<char> numbers_List = number.ToString().ToList<char>();
+int[] count_numbers = new int[10];
 
-if (age >= 0)
+foreach (char digitChar in numbers_List)
 {
-    if (sex == 'K')
+    int digit;
+    if (int.TryParse(digitChar.ToString(), out digit))
     {
-        if (name == "Ewa" && age == 33)
+        for (int i = 0; i < count_numbers.Length; i++)
         {
-            Console.WriteLine(name + ", lat " + age);
-        }
-        else if (age < 33)
-        {
-            Console.WriteLine("Kobieta ponizej 33 lat.");
-        }
-        else
-        {
-            Console.WriteLine("Kobieta o imieniu " + name + ", lat " + age);
+
+            if (i == digit)
+            {
+                count_numbers[i]++;
+            }
+
         }
     }
-    else if (sex == 'M')
-    {
-        if (age < 18)
-        {
-            Console.WriteLine("Niepelnoletni mezczyzna");
-        }
-        else
-        {
-            Console.WriteLine("Mezczyzna, o imieniu " + name + ", lat " + age);
-        }
-    }
-    else
-    {
-        Console.WriteLine("Niepoprawna plec (M - mezczyzna, K - kobieta)");
-    }
+
 }
-else
+
+for (int i = 0; i < count_numbers.Length; i++)
 {
-    Console.WriteLine("Niepoprawny wiek (wiek nie moze byc ujemny");
+    Console.WriteLine(i + " => " + count_numbers[i]);
 }
