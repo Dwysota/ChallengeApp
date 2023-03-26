@@ -25,14 +25,7 @@
         }
         public void addScore(int score)
         {
-            if (1 <= score && score <= 10)
-            {
                 this.scores.Add(score);
-            }
-            else
-            {
-                Console.WriteLine("Nieprawidlowa wartosc punktowa");
-            }
 
         }
         public string getData()
