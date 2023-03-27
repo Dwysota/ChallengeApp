@@ -17,6 +17,10 @@
         {
             this.scores.Add(0);
         }
+        public Employee(string name)
+        {
+            this.Name = name; ;
+        }
         public Employee(string name, string surname, int age)
         {
             this.Name = name;
