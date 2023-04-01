@@ -11,5 +11,6 @@ namespace ChallengeApp
         public double Min { get; set; }
         public double Max { get; set; }
         public double Average { get; set; }
+        public char AverageLetter { get; set; }
     }
 }

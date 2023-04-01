@@ -13,6 +13,7 @@
                 return grades.Sum();
             }
         }
+
         public Employee()
         {
             this.grades.Add(0);
@@ -33,41 +34,89 @@
         }
         public void AddGrade(double grade)
         {
-            if(grade >= 0 && grade <= 100) {
-                this.grades.Add(Math.Round(grade,2));
+            if (grade >= 0 && grade <= 100)
+            {
+                this.grades.Add(Math.Round(grade, 2));
             }
             else
             {
                 Console.WriteLine("Invalid grade value: " + grade);
             }
-            
+
 
         }
         public void AddGrade(string grade)
         {
-            if (double.TryParse(grade, out double tmpValue))
+            if (grade != "")
             {
-                this.AddGrade(tmpValue);
+                if (double.TryParse(grade, out double tmpValue))
+                {
+                    this.AddGrade(tmpValue);
+                }
+                else
+                {
+                    if(grade.Length == 1)
+                    {
+                        this.AddGrade((char)grade[0]);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Grade is not a value.");
+                    }
+                    
+                }
             }
             else
             {
-                Console.WriteLine("String is not a value.");
+                Console.WriteLine("Grade has no value");
             }
-            
+        }
+        public void AddGrade(char grade)
+        {
+            if (grade != null)
+            {
+                switch (char.ToLower(grade))
+                {
+                    case 'a':
+                        this.AddGrade(100);
+                        break;
+                    case 'b':
+                        this.AddGrade(80);
+                        break;  
+                    case 'c':
+                        this.AddGrade(60);
+                        break;
+                    case 'd':
+                        this.AddGrade(40);
+                        break;
+                    case 'e':
+                        this.AddGrade(20);
+                        break;
+                    default:
+                        Console.WriteLine("Grade is not a value.");
+                        break;
+                }
+                
+
+            }
+            else
+            {
+                Console.WriteLine("Grade has no value");
+            }
         }
         public void AddGrade(float grade)
         {
-            this.AddGrade((double) grade);
+            this.AddGrade((double)grade);
         }
         public void AddGrade(int grade)
         {
 
-            this.AddGrade((double) grade);
+            this.AddGrade((double)grade);
         }
         public void AddGrade(long grade)
         {
 
-            this.AddGrade((double) grade);
+            this.AddGrade((double)grade);
         }
         public string getData()
         {
@@ -88,6 +137,27 @@
 
             }
             statistics.Average /= this.grades.Count;
+
+            switch (statistics.Average)
+            {
+                case var stat when stat > 80:
+                    statistics.AverageLetter = 'A';
+                    break;
+                case var stat when stat > 60:
+                    statistics.AverageLetter = 'B';
+                    break;
+                case var stat when stat > 40:
+                    statistics.AverageLetter = 'C';
+                    break;
+                case var stat when stat > 20:
+                    statistics.AverageLetter = 'D';
+                    break;
+                case var stat when stat > 0:
+                    statistics.AverageLetter = 'E';
+                    break;
+            }
+
+
             return statistics;
         }
         public Statistics GetStatisticsWithForEach()
@@ -132,9 +202,9 @@
             statistics.Min = float.MaxValue;
 
             int i = 0;
-            do 
+            do
             {
-                if(grades.Count == 0)
+                if (grades.Count == 0)
                 {
                     break;
                 }
@@ -143,7 +213,7 @@
                 statistics.Average += grades[i];
                 i++;
 
-            }while(i < grades.Count);
+            } while (i < grades.Count);
 
             statistics.Average /= this.grades.Count;
             return statistics;
@@ -156,7 +226,7 @@
             statistics.Min = float.MaxValue;
 
             int i = 0;
-            while(i < grades.Count)
+            while (i < grades.Count)
             {
                 statistics.Min = Math.Min(statistics.Min, grades[i]);
                 statistics.Max = Math.Max(statistics.Max, grades[i]);
