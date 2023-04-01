@@ -1,8 +1,10 @@
 ﻿
 namespace ChallengeApp.Tests
 {
-    internal class TypeTest
+    public class TypeTest
     {
+
+        
         [Test]
         public void CompareTwoReferncesVariables()
         {
@@ -15,6 +17,7 @@ namespace ChallengeApp.Tests
             // assert
             Assert.AreNotEqual(emp1, emp2);
         }
+        
         [Test]
         public void CompareTwoValuesVariables()
         {

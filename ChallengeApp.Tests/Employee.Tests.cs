@@ -10,7 +10,7 @@ namespace ChallengeApp.Tests
             double sum  = 0;   
             for (int i = 0; i<10; i++)
             {
-                double grade = new Random().NextDouble()*100;
+                double grade = Math.Round(new Random().NextDouble()*100, 2);
                 employ.AddGrade(grade);
                 sum += grade;
             }
@@ -29,7 +29,7 @@ namespace ChallengeApp.Tests
             double min = double.MaxValue;
             for (int i = 0; i < 10; i++)
             {
-                double grade = new Random().NextDouble() * 100;
+                double grade = Math.Round(new Random().NextDouble() * 100, 2);
                 employ.AddGrade(grade);
                 min = Math.Min(min, grade);
             }
@@ -48,7 +48,7 @@ namespace ChallengeApp.Tests
             double max = double.MinValue;
             for (int i = 0; i < 10; i++)
             {
-                double grade = new Random().NextDouble() * 100;
+                double grade = Math.Round(new Random().NextDouble() * 100, 2);
                 employ.AddGrade(grade);
                 max = Math.Max(max, grade);
             }
@@ -68,7 +68,7 @@ namespace ChallengeApp.Tests
             int i = 0;
             for (; i < 10; i++)
             {
-                double grade = new Random().NextDouble() * 100;
+                double grade = Math.Round(new Random().NextDouble() * 100, 2);
                 employ.AddGrade(grade);
                 sum += grade;
             }
@@ -78,6 +78,27 @@ namespace ChallengeApp.Tests
 
             // assert
             Assert.That(statistic.Average, Is.EqualTo(sum/i));
+        }
+        [Test]
+        public void OverlodingFunctions()
+        {
+            //  arrange
+            string gradeStr = "5";
+            double gradeDouble = 5;
+            float gradeFloat = 5;
+            int gradeInt = 5;
+            long gradeLong = 5;
+            Employee employee = new Employee("Dawid");
+
+            //act
+            employee.AddGrade(gradeStr);
+            employee.AddGrade(gradeDouble);
+            employee.AddGrade(gradeFloat);
+            employee.AddGrade(gradeInt);
+            employee.AddGrade(gradeLong);
+
+            // assert
+            Assert.AreEqual(25, employee.Result);
         }
     }
 }

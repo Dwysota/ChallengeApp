@@ -33,8 +33,41 @@
         }
         public void AddGrade(double grade)
         {
-            this.grades.Add(grade);
+            if(grade >= 0 && grade <= 100) {
+                this.grades.Add(Math.Round(grade,2));
+            }
+            else
+            {
+                Console.WriteLine("Invalid grade value: " + grade);
+            }
+            
 
+        }
+        public void AddGrade(string grade)
+        {
+            if (double.TryParse(grade, out double tmpValue))
+            {
+                this.AddGrade(tmpValue);
+            }
+            else
+            {
+                Console.WriteLine("String is not a value.");
+            }
+            
+        }
+        public void AddGrade(float grade)
+        {
+            this.AddGrade((double) grade);
+        }
+        public void AddGrade(int grade)
+        {
+
+            this.AddGrade((double) grade);
+        }
+        public void AddGrade(long grade)
+        {
+
+            this.AddGrade((double) grade);
         }
         public string getData()
         {
