@@ -100,5 +100,25 @@ namespace ChallengeApp.Tests
             // assert
             Assert.AreEqual(25, employee.Result);
         }
+        [Test]
+        public void WhenWeAddedGrades_SchouldReturnCorrectStatistic()
+        {
+            // arrange
+            Employee employee = new Employee("Dawid");
+            employee.AddGrade(10);
+            employee.AddGrade(20);
+            employee.AddGrade(30);
+            employee.AddGrade(49);
+            // act
+            var statistic = employee.GetStatistics();
+            var statisticFor = employee.GetStatisticsWithFor();
+            var statisticDoWhile = employee.GetStatisticsWithDoWhile();
+            var statisticWhile = employee.GetStatisticsWithWhile();
+            // assert
+            Assert.AreEqual(statisticDoWhile.Min, 10);
+            Assert.AreEqual(statisticWhile.Max, 49);
+            Assert.AreEqual(statisticFor.Average, statistic.Average);
+        }
+
     }
 }
