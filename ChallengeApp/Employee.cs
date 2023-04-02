@@ -2,7 +2,7 @@
 
 namespace ChallengeApp
 {
-    public class Employee : Person
+    public class Employee : Person, IEmployee
     {
         
         private List<double> grades = new List<double>();
