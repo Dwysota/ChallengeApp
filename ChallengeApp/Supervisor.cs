@@ -1,7 +1,7 @@
 ﻿
 namespace ChallengeApp
 {
-    internal class Supervisor : IEmployee
+    public class Supervisor : IEmployee
     {
         public string Name { get; set; }
         public string Surname { get; set; }
