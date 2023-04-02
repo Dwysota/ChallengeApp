@@ -40,7 +40,7 @@
             }
             else
             {
-                Console.WriteLine("Invalid grade value: " + grade);
+                throw new Exception("Invalid grade value: " + grade);
             }
 
 
@@ -61,14 +61,14 @@
                     }
                     else
                     {
-                        Console.WriteLine("Grade is not a value.");
+                        throw new Exception("Grade is not a value.");
                     }
                     
                 }
             }
             else
             {
-                Console.WriteLine("Grade has no value");
+                throw new Exception("Grade has no value");
             }
         }
         public void AddGrade(char grade)
@@ -93,15 +93,14 @@
                         this.AddGrade(20);
                         break;
                     default:
-                        Console.WriteLine("Grade is not a value.");
-                        break;
+                        throw new Exception("Grade is not a value.");
                 }
                 
 
             }
             else
             {
-                Console.WriteLine("Grade has no value");
+                throw new Exception("Grade has no value");
             }
         }
         public void AddGrade(float grade)
