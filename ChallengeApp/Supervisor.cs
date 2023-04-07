@@ -31,6 +31,10 @@ namespace ChallengeApp
 
 
         }
+        public void AddGrade(char grade)
+        {
+
+        }
         public void AddGrade(float grade)
         {
             this.AddGrade((double)grade);
