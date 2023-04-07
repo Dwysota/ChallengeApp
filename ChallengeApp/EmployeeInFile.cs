@@ -39,7 +39,7 @@
             AddGrade(grade);
         }
 
-        public override Svoid AddGrade(long grade)
+        public override void AddGrade(long grade)
         {
             AddGrade(grade);
         }
