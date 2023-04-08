@@ -6,7 +6,7 @@ namespace ChallengeApp.Tests
         public void WhenEmployeeCollectGrades_SchouldereturnCorrectResult()
         {
             // arrange
-            var employ = new Employee("Dawid", "W", 33);
+            var employ = new EmployeeInMemory("Dawid", "W");
             double sum  = 0;   
             for (int i = 0; i<10; i++)
             {
@@ -25,7 +25,7 @@ namespace ChallengeApp.Tests
         public void WhenEmployeeCollectGrades_SchouldeReturnCorrectMinValue()
         {
             // arrange
-            var employ = new Employee("Dawid", "W", 33);
+            var employ = new EmployeeInMemory("Dawid", "W");
             double min = double.MaxValue;
             for (int i = 0; i < 10; i++)
             {
@@ -44,7 +44,7 @@ namespace ChallengeApp.Tests
         public void WhenEmployeeCollectGrades_SchouldeReturnCorrectMaxValue()
         {
             // arrange
-            var employ = new Employee("Dawid", "W", 33);
+            var employ = new EmployeeInMemory("Dawid", "W");
             double max = double.MinValue;
             for (int i = 0; i < 10; i++)
             {
@@ -63,7 +63,7 @@ namespace ChallengeApp.Tests
         public void WhenEmployeeCollectGrades_SchouldeReturnCorrectAverageValue()
         {
             // arrange
-            var employ = new Employee("Dawid", "W", 33);
+            var employ = new EmployeeInMemory("Dawid", "W");
             double sum = 0;
             int i = 0;
             for (; i < 10; i++)
@@ -88,7 +88,7 @@ namespace ChallengeApp.Tests
             float gradeFloat = 5;
             int gradeInt = 5;
             long gradeLong = 5;
-            Employee employee = new Employee("Dawid");
+            EmployeeInMemory employee = new EmployeeInMemory("Dawid", "W");
 
             //act
             employee.AddGrade(gradeStr);
@@ -100,31 +100,12 @@ namespace ChallengeApp.Tests
             // assert
             Assert.AreEqual(25, employee.Result);
         }
-        [Test]
-        public void WhenWeAddedGrades_SchouldReturnCorrectStatistic()
-        {
-            // arrange
-            Employee employee = new Employee("Dawid");
-            employee.AddGrade(10);
-            employee.AddGrade(20);
-            employee.AddGrade(30);
-            employee.AddGrade(49);
-            // act
-            var statistic = employee.GetStatistics();
-            var statisticFor = employee.GetStatisticsWithFor();
-            var statisticDoWhile = employee.GetStatisticsWithDoWhile();
-            var statisticWhile = employee.GetStatisticsWithWhile();
-            // assert
-            Assert.AreEqual(statisticDoWhile.Min, 10);
-            Assert.AreEqual(statisticWhile.Max, 49);
-            Assert.AreEqual(statisticFor.Average, statistic.Average);
-        }
 
         [Test]
         public void WhenWeAddedGradesLetter_SchouldReturnCorrectStatisticValue()
         {
             // arrange
-            Employee employee = new Employee("Dawid");
+            EmployeeInMemory employee = new EmployeeInMemory("Dawid", "W");
             employee.AddGrade('a');
             employee.AddGrade('b');
             employee.AddGrade('c');
@@ -139,7 +120,7 @@ namespace ChallengeApp.Tests
         public void WhenWeAddedGrades_SchouldReturnCorrectStatisticValueLetter()
         {
             // arrange
-            Employee employee = new Employee("Dawid");
+            EmployeeInMemory employee = new EmployeeInMemory("Dawid", "W");
             employee.AddGrade(20);
             employee.AddGrade(40);
             employee.AddGrade(60);

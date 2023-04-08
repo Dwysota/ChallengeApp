@@ -2,8 +2,8 @@
 {
     public class EmployeeInMemory : EmployeeBase
     {
-        
-        
+
+
         public EmployeeInMemory(string name, string surname) : base(name, surname)
         {
         }
@@ -37,38 +37,10 @@
                 throw new Exception("Grade has no value");
             }
         }
-       
+
         public override void AddGrade(char grade)
         {
-            if (grade != null)
-            {
-                switch (char.ToLower(grade))
-                {
-                    case 'a':
-                        this.AddGrade(100);
-                        break;
-                    case 'b':
-                        this.AddGrade(80);
-                        break;
-                    case 'c':
-                        this.AddGrade(60);
-                        break;
-                    case 'd':
-                        this.AddGrade(40);
-                        break;
-                    case 'e':
-                        this.AddGrade(20);
-                        break;
-                    default:
-                        throw new Exception("Grade is not a value.");
-                }
-
-
-            }
-            else
-            {
-                throw new Exception("Grade has no value");
-            }
+            base.AddGrade(grade);
         }
         public override void AddGrade(float grade)
         {

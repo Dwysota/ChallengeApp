@@ -46,41 +46,46 @@ namespace ChallengeApp
         public abstract void AddGrade(long grade);
 
         public abstract void AddGrade(string grade);
-        public abstract void AddGrade(char grade);
+        public virtual void AddGrade(char grade)
+        {
+            if (grade != null)
+            {
+                switch (char.ToLower(grade))
+                {
+                    case 'a':
+                        this.AddGrade(100);
+                        break;
+                    case 'b':
+                        this.AddGrade(80);
+                        break;
+                    case 'c':
+                        this.AddGrade(60);
+                        break;
+                    case 'd':
+                        this.AddGrade(40);
+                        break;
+                    case 'e':
+                        this.AddGrade(20);
+                        break;
+                    default:
+                        throw new Exception("Grade is not a value.");
+                }
+
+
+            }
+            else
+            {
+                throw new Exception("Grade has no value");
+            }
+        }
         public virtual Statistics GetStatistics()
         {
             var statistics = new Statistics();
-            statistics.Average = 0;
-            statistics.Max = float.MinValue;
-            statistics.Min = float.MaxValue;
-
-            foreach (var grade in this.grades)
+            foreach(var grade in this.grades)
             {
-                statistics.Min = Math.Min(statistics.Min, grade);
-                statistics.Max = Math.Max(statistics.Max, grade);
-                statistics.Average += grade;
-
+                statistics.AddGrade(grade);
             }
-            statistics.Average /= this.grades.Count;
 
-            switch (statistics.Average)
-            {
-                case var stat when stat > 80:
-                    statistics.AverageLetter = 'A';
-                    break;
-                case var stat when stat > 60:
-                    statistics.AverageLetter = 'B';
-                    break;
-                case var stat when stat > 40:
-                    statistics.AverageLetter = 'C';
-                    break;
-                case var stat when stat > 20:
-                    statistics.AverageLetter = 'D';
-                    break;
-                case var stat when stat > 0:
-                    statistics.AverageLetter = 'E';
-                    break;
-            }
 
 
             return statistics;
